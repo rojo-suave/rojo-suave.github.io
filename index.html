@@ -34,7 +34,7 @@
             position: relative;
         }
 
-        /* Fondo Interactivo de Manchas Líquidas (Estilo Linktree con Scroll Parallax) */
+        /* Fondo Interactivo de Manchas Líquidas */
         .liquid-bg {
             position: fixed;
             top: 0;
@@ -227,7 +227,7 @@
             line-height: 1.02;
             margin-bottom: 1.2rem;
             color: #ffffff;
-            text-shadow: 4px 5px 0px var(--accent-red);
+            text-shadow: 4px 5px 0px var(--accent-red), 0 0 35px rgba(255, 123, 41, 0.4);
             transform: rotate(-1.5deg);
         }
 
@@ -235,6 +235,7 @@
             font-size: 1.18rem;
             color: var(--text-cream);
             margin-bottom: 2.2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .btn-group {
@@ -297,8 +298,8 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .arcade-screen {
@@ -402,7 +403,7 @@
             padding: 3rem 5%;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(14, 4, 3, 0.88);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             color: var(--text-muted);
             font-size: 0.9rem;
             display: flex;
@@ -421,24 +422,18 @@
 </head>
 <body>
 
-    <!-- FONDO VECTORIAL DE MANCHAS ROJAS/CORALES ESTILO LINKTREE CON MOVIMIENTO AL BAJAR -->
+    <!-- FONDO VECTORIAL -->
     <div class="liquid-bg">
-        <!-- Capa 1: Manchas Rojo Profundo -->
         <svg class="liquid-layer" id="layerBack" viewBox="0 0 1440 1200" preserveAspectRatio="xMidYMid slice">
             <g fill="#c4140b" class="blob-shape-slow">
                 <path d="M-100,120 C120,80 180,320 380,290 C580,260 620,40 850,90 C1080,140 1020,410 1250,380 C1480,350 1550,180 1600,250 L1600,650 C1400,720 1280,510 1050,580 C820,650 790,910 540,860 C290,810 220,550 -80,620 Z" />
                 <path d="M150,950 C350,820 520,1080 780,980 C1040,880 1120,720 1380,830 C1640,940 1500,1300 1250,1350 L-50,1350 C-120,1150 -50,1080 150,950 Z" />
             </g>
         </svg>
-
-        <!-- Capa 2: Manchas Coral / Salmón (Idénticas a la captura de Linktree) -->
         <svg class="liquid-layer" id="layerFront" viewBox="0 0 1440 1200" preserveAspectRatio="xMidYMid slice">
             <g fill="#f25c50" opacity="0.92" class="blob-shape">
-                <!-- Mancha fluida superior izquierda -->
                 <path d="M-80,-60 C90,-90 260,30 310,180 C360,330 190,450 260,590 C330,730 560,680 610,830 C660,980 480,1150 310,1180 C140,1210 -60,1050 -110,880 C-160,710 40,560 -30,380 C-100,200 -250,-30 -80,-60 Z" />
-                <!-- Mancha fluida derecha/centro -->
                 <path d="M980,-40 C1180,-80 1390,60 1480,240 C1570,420 1380,620 1450,810 C1520,1000 1620,1150 1420,1240 C1220,1330 990,1190 910,1010 C830,830 1050,670 960,490 C870,310 640,370 620,190 C600,10 780,0 980,-40 Z" />
-                <!-- Isla orgánica central -->
                 <path d="M580,420 C690,370 820,460 840,570 C860,680 740,790 620,760 C500,730 470,470 580,420 Z" />
             </g>
         </svg>
@@ -476,13 +471,17 @@
         </div>
     </section>
 
-    <!-- VIDEOJUEGO EL OUTRO (ARCHIVO ACTUALIZADO) -->
+    <!-- VIDEOJUEGO EL OUTRO (NUEVA INTERFAZ MÓVIL) -->
     <section id="juego">
         <h2>El Outro: El Videojuego</h2>
         <div class="game-container">
             <div class="game-header">
-                <p style="color: var(--text-cream);">Haz clic dentro de la pantalla para empezar a jugar. Usa el botón para expandir a pantalla completa.</p>
-                <button onclick="toggleFullScreen()" class="btn btn-primary" style="padding: 0.55rem 1.2rem; font-size: 0.85rem;">⛶ Pantalla Completa</button>
+                <p style="color: var(--text-cream); max-width: 600px;">Haz clic dentro de la pantalla para jugar. <strong style="color: var(--accent-orange);">Si estás en un celular o tablet, ábrelo en pantalla completa móvil</strong> para poder girar la pantalla y tener la mejor experiencia.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button onclick="toggleFullScreen()" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">⛶ Pantalla Completa (PC)</button>
+                    <!-- BOTÓN ESPECIAL PARA CELULARES QUE ABRE EN PESTAÑA NUEVA -->
+                    <a href="Rojo_Suave_-_El_Outro_jefes (6).html" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">📱 Pantalla Completa (Celular)</a>
+                </div>
             </div>
             <div class="arcade-screen" id="gameWrapper">
                 <iframe id="gameFrame" src="Rojo_Suave_-_El_Outro_jefes (6).html" allowfullscreen></iframe>
@@ -565,6 +564,15 @@
         function toggleFullScreen() {
             const gameWrapper = document.getElementById('gameWrapper');
             const gameFrame = document.getElementById('gameFrame');
+            
+            // Detectar si es iOS (iPhone/iPad) para mostrar mensaje amigable
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+            if (isIOS) {
+                alert("🍎 Hola. Para jugar en pantalla completa desde un iPhone, usa el botón rojo de al lado que dice 'Pantalla Completa (Celular)'.");
+                return;
+            }
+
             if (!document.fullscreenElement) {
                 if (gameWrapper.requestFullscreen) {
                     gameWrapper.requestFullscreen();
