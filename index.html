@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base-red: #e62419; /* Rojo intenso base del Linktree */
-            --blob-coral: #f25c50;  /* Manchas coral/salmón claro */
-            --blob-crimson: #c4140b; /* Manchas rojo profundo */
+            --bg-base-red: #e62419;
+            --blob-coral: #f25c50;
+            --blob-crimson: #c4140b;
             --bg-card: rgba(18, 5, 4, 0.84);
             --accent-red: #e62e1b;
             --accent-orange: #ff7b29;
@@ -298,8 +298,8 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .arcade-screen {
@@ -471,7 +471,7 @@
         </div>
     </section>
 
-    <!-- VIDEOJUEGO EL OUTRO (NUEVA INTERFAZ MÓVIL) -->
+    <!-- VIDEOJUEGO EL OUTRO -->
     <section id="juego">
         <h2>El Outro: El Videojuego</h2>
         <div class="game-container">
@@ -479,12 +479,13 @@
                 <p style="color: var(--text-cream); max-width: 600px;">Haz clic dentro de la pantalla para jugar. <strong style="color: var(--accent-orange);">Si estás en un celular o tablet, ábrelo en pantalla completa móvil</strong> para poder girar la pantalla y tener la mejor experiencia.</p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <button onclick="toggleFullScreen()" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">⛶ Pantalla Completa (PC)</button>
-                    <!-- BOTÓN ESPECIAL PARA CELULARES QUE ABRE EN PESTAÑA NUEVA -->
-                    <a href="Rojo_Suave_-_El_Outro_jefes (6).html" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">📱 Pantalla Completa (Celular)</a>
+                    <!-- CORRECCIÓN: Botón celular apunta al archivo (7) -->
+                    <a href="Rojo_Suave_-_El_Outro_jefes (7).html" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">📱 Pantalla Completa (Celular)</a>
                 </div>
             </div>
             <div class="arcade-screen" id="gameWrapper">
-                <iframe id="gameFrame" src="Rojo_Suave_-_El_Outro_jefes (6).html" allowfullscreen></iframe>
+                <!-- CORRECCIÓN: Iframe apunta al archivo (7) -->
+                <iframe id="gameFrame" src="Rojo_Suave_-_El_Outro_jefes (7).html" allowfullscreen></iframe>
             </div>
         </div>
     </section>
